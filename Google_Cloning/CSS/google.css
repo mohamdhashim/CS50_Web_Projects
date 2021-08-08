@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: arial, sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.navbar{
+    display: flex;
+    margin-top: 14px;
+    justify-content: flex-end;
+    align-items: center;
+}
+.navbar a{
+	line-height: 24px;
+    display: inline-block;
+    padding: 10px 5px;
+    cursor: pointer;
+    font-size: 15px;
+    justify-content: flex-end;
+    margin-right: 14px;
+}
+
+.navbar img{
+   width: 20px;
+   margin-right: 14px;
+}
+.navbar img:hover{
+    opacity: 0.5;
+}
+
+.navbar button {
+    background-color: #4285f4;
+    color: white;  
+    border-radius: 4px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 7px 12px;
+    margin-right: 14px;
+
+}
+.image img {
+    width: 272px;
+    display:block;
+    margin: auto;
+}
+.image{    
+    padding-top: -100px;
+}
+form{
+    align-self: center;
+    padding-top: 100px;
+    padding-bottom: 10px;
+}
+
+
+.searchbar {
+    display: block;
+    border-color: #ddd;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 20px;
+    margin: 10px;
+    width: 500px;
+    padding: 13px;
+    padding-left: 45px;
+    border-radius: 25px;
+    margin-top: 40px;
+
+  }
+.bar{
+    position: relative;
+    text-align: center;
+    
+}
+
+.mic_icon{
+      width: 14px;
+      position: absolute;
+      top: 12px;
+      right : 26px;
+  }
+  .search_icon{
+    width: 20px;
+    position: absolute;
+    top: 12px;
+    left : 26px;
+    opacity: 40%;
+}
+
+
+form .btn{
+    padding: 9px 15px;
+    margin-top: 28px;
+    margin-left:15px;
+    color: #3c4043;
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: arial,sans-serif;
+    font-size: 14px;
+    transition: border-color 200ms;
+}
+
+form .btn:hover{
+    border-color: rgba(235, 223, 223, 0.712);
+}
+
+
+.lang{
+    text-align: center;
+    margin-top: 20px;
+    font-size: small;
+
+}
+a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
