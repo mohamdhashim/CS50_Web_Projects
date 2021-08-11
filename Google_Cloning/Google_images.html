@@ -2,18 +2,35 @@
 <html>
     <head>
         <title>Google Images</title>
-        <link rel="stylesheet" type="text/css" href="CSS/google_images.css">
+        <link rel="stylesheet" type="text/css" href="CSS/google.css">
         <link rel="icon" href="Images/icon.jpg">
     </head>
 
     <body>
-        <nav>
+
+        <nav class="navbar">
             <img src="Images/block.png" alt="storeblock.png">
-            <button>Sign in</button>
-            <a>Search</a>
+            <a href="Google.html">Search</a>          
+            <button title="click here">Sign in</button>
         </nav>
 
-        <form action="https://www.google.com.eg/imghp">
+        <form action="https://www.google.com/search" method="get">
+
+            <div class = "image">
+                <img src="Images/google.png" alt="google.png">
+            </div>
+
+            <div class="bar">
+                <input class ="searchbar" type="text" name="q">
+                <input type="hidden" name="tbm" value="isch" />
+                <img src="Images/vs.png" class="mic_icon" title="search by voice">
+                <img src="Images/search.svg" class="search_icon">
+                <img src="Images/camera.png" class="camera_icon"  title="search by image">
+            </div>
+
+        </form>
+
+       
         
             
 

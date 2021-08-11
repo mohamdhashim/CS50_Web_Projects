@@ -45,7 +45,7 @@ body {
     font-weight: bold;
     padding: 7px 12px;
     margin-right: 14px;
-
+    cursor: pointer;
 }
 .image img {
     width: 272px;
@@ -82,19 +82,7 @@ form{
     
 }
 
-.mic_icon{
-      width: 14px;
-      position: absolute;
-      top: 12px;
-      right : 26px;
-  }
-  .search_icon{
-    width: 20px;
-    position: absolute;
-    top: 12px;
-    left : 26px;
-    opacity: 40%;
-}
+
 
 
 form .btn{
@@ -125,4 +113,28 @@ form .btn:hover{
 a:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+
+.camera_icon{
+    width: 20px;
+    position: absolute;
+    top: 12px;
+    right : 50px;
+    cursor: pointer;
+
+}
+.mic_icon{
+    width: 14px;
+    position: absolute;
+    top: 12px;
+    right : 26px;
+    cursor: pointer;
+    
+}
+.search_icon{
+  width: 20px;
+  position: absolute;
+  top: 12px;
+  left : 26px;
+  opacity: 40%;
 }
