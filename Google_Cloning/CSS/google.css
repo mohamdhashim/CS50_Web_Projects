@@ -138,3 +138,9 @@ a:hover{
   left : 26px;
   opacity: 40%;
 }
+.img_word{
+    position: absolute;
+    top: -60px;
+    right: 130px;
+    color: #4285f4;
+}
