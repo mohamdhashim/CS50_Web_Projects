@@ -11,7 +11,7 @@ def index(request):
     })
 
 def topic(request,name):
-    with open (f'entries/{name.capitalize()}.md','r') as f:
+    with open (f'entries/{name.lower()}.md','r') as f:
         text = f.read()
         html = markdown.markdown(text)
     
