@@ -11,6 +11,8 @@ def index(request):
     })
 
 def topic(request,name):
+    if(name.lower() not in util.list_entries()):
+        return render(request,'encyclopedia/not_found.html',{'name':name})
     with open (f'entries/{name.lower()}.md','r') as f:
         text = f.read()
         html = markdown.markdown(text)
