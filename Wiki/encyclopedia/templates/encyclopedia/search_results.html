@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html"%}
+
+{% block title %}
+    searching results
+{% endblock %}
+
+{% block body %}
+    <h3>We have found {{count}} results...</h3>
+    <br>
+
+    <ul>
+        {% for entry in entries %}
+            <li><a href = '{% url 'topic' entry%}'>{{entry}}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
