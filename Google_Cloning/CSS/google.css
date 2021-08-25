@@ -26,6 +26,7 @@ body {
     font-size: 15px;
     justify-content: flex-end;
     margin-right: 14px;
+    color:black;
 }
 
 .navbar img{
@@ -143,4 +144,18 @@ a:hover{
     top: -60px;
     right: 130px;
     color: #4285f4;
+}
+.navbar .google_icon{
+    width: 70px;
+    position: absolute;
+    left: 1.5%;
+}
+
+.appbar{
+    color:red;
+    padding:25px 35px;
+    font-size: 20px;
+}
+.line{
+    border-bottom: 1px solid #ebebeb;
 }
