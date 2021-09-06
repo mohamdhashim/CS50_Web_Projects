@@ -20,10 +20,19 @@ def topic(request,name):
         html = markdown.markdown(text)
     
     name = name.lower() #to prevent making another Html copy if user input Url capitalized ex : wiki/Git same as wiki/git
-    with open(f'encyclopedia/templates/encyclopedia/{name}.html','w') as f:
-        f.write(html)
+    return render(request,f'encyclopedia/topic.html',{'content': html, 'topic': name}) 
 
-    return render(request,f'encyclopedia/{name}.html') 
+
+def edit(request,name):
+
+    with open (f"entries/{name.lower()}.md",'r') as f:
+        text = f.read()
+        full_text = ""
+        for i in text:
+            for t in i:
+                full_text += t
+
+    return render(request,f"encyclopedia/css.html") 
 
 
 def search(request):
