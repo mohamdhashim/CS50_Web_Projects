@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render
 from django.http import HttpResponse
 import markdown 
@@ -32,7 +33,12 @@ def edit(request,name):
             for t in i:
                 full_text += t
 
-    return render(request,f"encyclopedia/css.html") 
+    
+    new_content = request.POST.get('new_text')
+    if(new_content):
+        util.save_entry(name, new_content)
+        return topic(request, name)
+    return render(request,f"encyclopedia/edit.html",{"text":full_text,"topic":"edit "+name}) 
 
 
 def search(request):
