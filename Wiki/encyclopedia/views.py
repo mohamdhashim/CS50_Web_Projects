@@ -19,7 +19,7 @@ def topic(request,name):
         text = f.read()
         html = markdown.markdown(text)
     
-    name = name.lower() #to prevent making another Html copy if user input Url capitalized ex : wiki/Git same as wiki/git
+    name = name.lower()
     return render(request,f'encyclopedia/topic.html',{'content': html, 'topic': name}) 
 
 
@@ -39,7 +39,7 @@ def search(request):
 
     q = request.GET['q']
     if q == '':
-        return index(request) #if searching is empty say in the same page
+        return index(request) #if searching is empty stay in the same page(Home page)
 
 
     if q.lower() in util.list_entries():
@@ -54,6 +54,3 @@ def search(request):
         return render(request, "encyclopedia/search_results.html", {
         "entries": searched_list ,"count" : len(searched_list)
         })
-
-    
-   #return render(request,f'encyclopedia/search_results.html') 
