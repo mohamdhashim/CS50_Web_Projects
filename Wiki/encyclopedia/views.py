@@ -39,7 +39,7 @@ def edit(request,name):
     new_content = request.POST.get('new_text')
     if(new_content):
         util.save_entry(name, new_content)
-        return topic(request, name)
+        return redirect("topic", name)
         
     return render(request,f"encyclopedia/edit.html",{"text":full_text,"topic":"edit "+name}) 
 
@@ -69,7 +69,7 @@ def search(request):
 
 
     if q.lower() in util.list_entries():
-        return topic(request, q)
+        return redirect("topic", q)
     
     else: 
         searched_list = []
