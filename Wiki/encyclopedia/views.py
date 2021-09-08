@@ -24,6 +24,7 @@ def topic(request,name):
     return render(request,f'encyclopedia/topic.html',{'content': html, 'topic': name}) 
 
 
+
 def edit(request,name):
 
     with open (f"entries/{name.lower()}.md",'r') as f:
@@ -38,7 +39,25 @@ def edit(request,name):
     if(new_content):
         util.save_entry(name, new_content)
         return topic(request, name)
+        
     return render(request,f"encyclopedia/edit.html",{"text":full_text,"topic":"edit "+name}) 
+
+
+def create(request):
+
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('new_text')
+
+        if  title == '':
+            return render(request, f"encyclopedia/create.html", {"error":2})
+        elif title in util.list_entries():
+            return render(request, f"encyclopedia/create.html", {"error":1})
+        else:
+            util.save_entry(title.lower(), content)
+            return topic(request, title)
+    else:
+        return render(request, f"encyclopedia/create.html")
 
 
 def search(request):

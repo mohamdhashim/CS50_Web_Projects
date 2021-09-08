@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create new page
+{% endblock %}
+
+{%block body%}
+
+    {%if error == 1 %}
+        <label style="color: red;"> NOTE: this title is already exist </label>
+    {%endif%}
+
+    <form name = "edit" method="POST">
+        {% csrf_token %}
+            <input type="text" name="title" id="title_txt" placeholder="title" style="margin-bottom: 10px;">
+
+            {%if error == 2 %}
+                 <label style="color: red; font-size: 15px;"> * title is empty </label>
+            {%endif%}
+    
+            <textarea name = "new_text"
+            class="form-control"
+            id="content"
+            cols="30"
+            name="content"
+            rows="10"
+            placeholder="Write Content in Markdown!!"
+            ></textarea>
+        <input type="submit" value="Save" class="btn btn-success my-3" />
+    </form>
+
+
+{%endblock%}
