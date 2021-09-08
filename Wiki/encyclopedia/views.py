@@ -1,5 +1,5 @@
 import re
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 import markdown 
 
@@ -13,6 +13,7 @@ def index(request):
 
 
 def topic(request,name):
+
     if(name.lower() not in util.list_entries()):
         return render(request,'encyclopedia/not_found.html',{'name':name})
 
@@ -55,7 +56,7 @@ def create(request):
             return render(request, f"encyclopedia/create.html", {"error":1})
         else:
             util.save_entry(title.lower(), content)
-            return topic(request, title)
+            return redirect("topic",title)
     else:
         return render(request, f"encyclopedia/create.html")
 
@@ -79,3 +80,8 @@ def search(request):
         return render(request, "encyclopedia/search_results.html", {
         "entries": searched_list ,"count" : len(searched_list)
         })
+
+def random(request):
+
+    import random
+    return redirect("topic", random.choice(util.list_entries()))
