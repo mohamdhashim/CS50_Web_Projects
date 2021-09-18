@@ -1,0 +1,83 @@
+
+  
+  body {
+    padding: 10px;
+  }
+  
+  .container {
+    max-width: 1140px;
+    padding:  10px 10px;
+    margin: 20px;
+  }
+  
+  .nicebox-row {
+    margin: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nicebox {
+    flex: 0 0 calc(1140px / 4);
+    padding: 10px;
+    text-align: center;
+  }
+  .nicebox > a {
+    display: block;
+  }
+  
+  figure {
+    margin: 0;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+    background-color: #2C3F52;
+  }
+  figure img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    display: block;
+    will-change: transform;
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  
+  figcaption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: #2C3F52;
+    color: #ED4E6E;
+    transform-origin: center;
+    transform: translateY(70%);
+    transition: transform 400ms ease, background 600ms;
+    will-change: transform;
+  }
+  figcaption h3 {
+    margin-top: 0;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  figcaption p {
+    margin: 25px 0 0;
+    transition: opacity 0.4s ease;
+    color: #fff;
+    opacity: 0;
+  }
+  
+  figure:hover figcaption {
+    transform: translateY(0px);
+    background: rgba(44, 63, 82, 0.9);
+  }
+  figure:hover p {
+    opacity: 1;
+  }
+  figure:hover img {
+    transform: translateY(-50px);
+  }
+  
