@@ -3,21 +3,46 @@
 {% block body %}
 
     <h2>Active Listings</h2>
+    
     <div class="container">
-        <div class="nicebox-row">
-          <div class="nicebox"><a href="#">
-              <figure><img src="https://unsplash.it/400/400?image=1080" alt="image"/>
-                <figcaption>
-                  <h3>Lorem</h3><span>Floor 3 | sector A33</span>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ipsa et veniam ipsum quam expedita, dicta. Consectetur perferendis nesciunt unde consectetur adipisicing elit. Quaerat, ipsa et veniam ipsum quam expedita, dicta. Consectetur perferendis.</p>
-                </figcaption>
-              </figure></a>
+
+      <div class="nicebox-row">
+
+        {% for item in active %}
+
+          <div class="flip-card">  
+
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+
+                  <img src="https://unsplash.it/400/400?image=1080" alt="Avatar">
+                    <h1>panda</h1>
+                    <h4>Current Bid : 50$</h4>
+              </div>
+            
+                
+                
+              <div class="flip-card-back">
+                <h1>John Doe</h1> 
+                <p>Architect & Engineer</p> 
+                <p>We love that guy</p>
+              </div>
+                
+                <!-- <div><img src="" alt="image"/>
+  
+                    <h3>{{item.title}}</h3><span>Current bid : {{item.current_bid}}$</span>
+                    
+                    <!--max describtions len = 411 char (must filled with spaces to keep align style)
+                </div>
+               </a> -->
+
+            </div>
           </div>
-  
 
+         {% endfor %}
 
-        </div>
-      </div>
+       </div>
+
+    </div>
   
-  </div>
 {% endblock %}
