@@ -1,1 +1,12 @@
 {% extends "auctions/layout.html" %}
+
+
+
+
+{% block body %}
+
+    {% if user.is_authenticated %}
+        <h1>Mogsfaaaaaaaaaaa {{user.username}}</h1>
+    {% endif %}
+
+{% endblock %}
