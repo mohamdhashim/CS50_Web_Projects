@@ -10,10 +10,6 @@ from .models import *
 def index(request):
 
     active = listings.objects.all()
-    for item in active:
-        item.description = item.description #this line to keep design looks better.
- 
-    
     return render(request, "auctions/index.html",{"active":active})
 
 

@@ -10,7 +10,7 @@ class listings(models.Model):
     title = models.CharField(max_length=30)
     current_bid = models.IntegerField(null=True)
     start_bid = models.IntegerField(default=1)
-    picture = models.FilePathField(default = '')
+    image = models.ImageField(blank=True , default = 'sabo.png')
     description = models.CharField(max_length=411, default = "No Describtion out there")
 
 class comments(models.Model):

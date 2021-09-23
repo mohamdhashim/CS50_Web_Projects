@@ -1,5 +1,5 @@
 {% extends "auctions/layout.html" %}
-
+{% load static %} 
 {% block body %}
 
     <h2>Active Listings</h2>
@@ -10,27 +10,29 @@
 
         {% for item in active %}
 
-          <div class="flip-card">  
+          <div class="flip-card">  <a href="#" >
 
             <div class="flip-card-inner">
               <div class="flip-card-front">
+                  <img src =  "{{item.image.url}}" alt={{item.title}}>
+                    <h1>{{item.title}}</h1>
+                    <h4>Current Bid : {{item.current_bid}}$</h4>
 
-                  <img src="https://unsplash.it/400/400?image=1080" alt="Avatar">
-                    <h1>panda</h1>
-                    <h4>Current Bid : 50$</h4>
-              </div>
+                  {{item.picture}}
+          </div>
             
                 
-                
+              
+
+              
               <div class="flip-card-back">
-                <h1>John Doe</h1> 
-                <p>Architect & Engineer</p> 
-                <p>We love that guy</p>
+                <h4 style = "margin-top: 20px;">Description</h4> 
+                <p>{{item.description}}</p> 
               </div>
-                
+             </a>
                 <!-- <div><img src="" alt="image"/>
   
-                    <h3>{{item.title}}</h3><span>Current bid : {{item.current_bid}}$</span>
+                    <h3></h3><span>Current bid : $</span>
                     
                     <!--max describtions len = 411 char (must filled with spaces to keep align style)
                 </div>
