@@ -10,33 +10,19 @@
 
         {% for item in active %}
 
-          <div class="flip-card">  <a href="#" >
+          <div class="flip-card">  <a href="{% url 'product' item.id%}" >
 
             <div class="flip-card-inner">
               <div class="flip-card-front">
                   <img src =  "{{item.image.url}}" alt={{item.title}}>
                     <h1>{{item.title}}</h1>
                     <h4>Current Bid : {{item.current_bid}}$</h4>
-
-                  {{item.picture}}
-          </div>
+              </div>
             
-                
-              
-
-              
               <div class="flip-card-back">
                 <h4 style = "margin-top: 20px;">Description</h4> 
                 <p>{{item.description}}</p> 
-              </div>
-             </a>
-                <!-- <div><img src="" alt="image"/>
-  
-                    <h3></h3><span>Current bid : $</span>
-                    
-                    <!--max describtions len = 411 char (must filled with spaces to keep align style)
-                </div>
-               </a> -->
+              </div>  </a>
 
             </div>
           </div>

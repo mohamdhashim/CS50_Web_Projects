@@ -1,0 +1,29 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block head %}
+    <title>{{product.title}}</title>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="product_img" >
+        <h1>{{product.title}}</h1>
+        <img src =  "{{product.image.url}}" alt={{product.title}} style = "width: 250px; height: 330px;">
+        
+        <h4>Current Bid : {{product.current_bid}}$</h4>
+    </div>
+
+    <h5>Comments</h5>
+    {% for comment in comments %}
+        <h6>{{comment.user}}</h6>
+        <hr>
+        <p>{{comment.text}}</p>
+        <span> </span>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <h1>Mogsfaaaaaaaaaaa {{user.username}}</h1>
+    {% endif %}
+
+{% endblock %}

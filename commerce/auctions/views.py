@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse
 
 from .models import *
@@ -63,3 +63,13 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
+
+
+def product(request,item):
+
+    try: 
+        product = listings.objects.get(pk = item)
+        comments = product.comments.all()
+        return render(request,"auctions/product.html",{"product":product,"comments":comments})
+    except:
+        return redirect("index")
