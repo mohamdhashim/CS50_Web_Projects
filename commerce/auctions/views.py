@@ -66,6 +66,18 @@ def register(request):
 
 
 def product(request,item):
+    item = int(item)
+    print(item+1)
+    print("####################################################")
+    if request.method == "POST":
+        new_bid = request.POST["bid"]
+        product = listings.objects.get(pk = item)
+
+        print(new_bid)
+        if (int(new_bid) > product.current_bid):
+            product.current_bid = new_bid
+            product.save()
+
 
     try: 
         product = listings.objects.get(pk = item)

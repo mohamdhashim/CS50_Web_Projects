@@ -13,9 +13,11 @@
         
         <h4>Current Bid : {{product.current_bid}}$</h4>
     </div>
-    <form class = "bid_input">
-        <textarea placeholder = "add new bid"></textarea>
-        <button>Sumbit</button>
+ 
+    <form class = "bid_input" action="{% url 'product' product.id%}" method="post">
+        {% csrf_token %}
+        <input class = "form-control" name = "bid" type ="text" placeholder = "add new bid" style = "width: 200px; display:inline;">
+        <input type = "submit" class = "btn btn-primary">
     </form>
 
     <h5>Comments</h5>
