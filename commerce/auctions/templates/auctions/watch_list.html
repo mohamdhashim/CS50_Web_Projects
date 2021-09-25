@@ -1,12 +1,38 @@
 {% extends "auctions/layout.html" %}
-
+{% load static %}
 
 
 
 {% block body %}
 
-    {% if user.is_authenticated %}
-        <h1>Mogsfaaaaaaaaaaa {{user.username}}</h1>
+    {% if user.is_authenticated %} 
+
+    <h2>Watch Listings</h2>
+    <div class="container">
+
+        <div class="nicebox-row">
+
+            {% for item in watch_list %}
+
+            <div class="flip-card">  <a href="{% url 'product' item.id%}" >
+
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src =  "{{item.title.image.url}}" alt={{item.title}}>
+                        <h1>{{item.title.title}}</h1>
+                        <h4>Current Bid : {{item.title.current_bid}}$</h4>
+                    </div>
+                
+                    <div class="flip-card-back">
+                    <h4 style = "margin-top: 20px;">Description</h4> 
+                    <p>{{item.title.description}}</p> 
+                    </div>  </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
     {% endif %}
 
 {% endblock %}

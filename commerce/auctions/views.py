@@ -73,3 +73,9 @@ def product(request,item):
         return render(request,"auctions/product.html",{"product":product,"comments":comments})
     except:
         return redirect("index")
+
+def watch_list(request):
+    name = User.objects.get(username = request.user)
+    list = name.list.all()
+    return render(request,"auctions/watch_list.html",{"watch_list":list})
+
