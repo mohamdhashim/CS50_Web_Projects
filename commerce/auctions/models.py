@@ -10,9 +10,8 @@ class listings(models.Model):
     title = models.CharField(max_length=30)
     current_bid = models.IntegerField(null=True)
     start_bid = models.IntegerField(default=1)
-    image = models.ImageField(blank=True , default = 'sabo.png')
+    image = models.ImageField(blank=True , default = 'sabo.png' )
     description = models.CharField(max_length=411, default = "No Describtion out there")
-
 class comments(models.Model):
     user = models.CharField(max_length=30)
     title_id = models.ForeignKey(listings, on_delete=models.CASCADE,related_name='comments')

@@ -1,0 +1,18 @@
+{% extends "auctions/layout.html" %}
+
+{% block head %}
+
+    <title>new product</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+    <form action="{% url 'new_product' %}" method="post" class = "form-group" enctype="multipart/form-data">
+        {{form.as_p}}
+        {% csrf_token %}
+        <input type = "submit" class="btn btn-primary">
+    </form>
+
+{% endblock %}

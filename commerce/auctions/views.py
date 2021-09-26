@@ -1,3 +1,4 @@
+from auctions.forms import newProductForm
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -91,3 +92,12 @@ def watch_list(request):
     list = name.list.all()
     return render(request,"auctions/watch_list.html",{"watch_list":list})
 
+def new_product(request):
+    if request.method == "POST":
+        form = newProductForm(data=request.POST, files=request.FILES)
+        new_item = form.save(commit=False)
+        new_item.current_bid = new_item.start_bid
+        new_item.save()
+
+    form = newProductForm()
+    return render(request,"auctions/new_product.html",{'form':form})
