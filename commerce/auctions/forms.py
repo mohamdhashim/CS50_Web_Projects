@@ -1,11 +1,11 @@
 from django.forms import ModelForm,widgets
-from auctions.models import listings
+from auctions.models import Listings
 from django.forms.widgets import *
 
 
 class newProductForm(ModelForm):
     class Meta:
-        model = listings
+        model = Listings
         fields = ['title','start_bid', 'description','image']
         widgets = {
 

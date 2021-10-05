@@ -17,8 +17,16 @@
     <form class = "bid_input" action="{% url 'product' product.id%}" method="post">
         {% csrf_token %}
         <input class = "form-control" name = "bid" type ="text" placeholder = "add new bid" style = "width: 200px; display:inline;">
-        <input type = "submit" class = "btn btn-primary">
+        <input type = "submit" class = "btn btn-primary" value = "Submit new bid" name = "new_bid" >
+        <input type = "submit" class ="btn btn-primary" name = "to_watch_list" value = "Add to Watch List">
     </form>
+    {% if not user.is_authenticated %}
+        <h6 style ="color:red;">Please login first</h6>
+    {% elif error == 1%}
+        <h6 style ="color:red;">Bid must be a number lager than current bid</h6>
+    {% elif error == 3%}
+        <h6 style ="color:green;">Bid added successfully!!</h6>
+    {% endif%}
 
     <h5>Comments</h5>
     {% for comment in comments %}

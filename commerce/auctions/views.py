@@ -10,7 +10,7 @@ from .models import *
 
 def index(request):
 
-    active = listings.objects.all()
+    active = Listings.objects.all()
     return render(request, "auctions/index.html",{"active":active})
 
 
@@ -68,22 +68,37 @@ def register(request):
 
 def product(request,item):
     item = int(item)
-    print(item+1)
-    print("####################################################")
-    if request.method == "POST":
-        new_bid = request.POST["bid"]
-        product = listings.objects.get(pk = item)
 
-        print(new_bid)
-        if (int(new_bid) > product.current_bid):
-            product.current_bid = new_bid
-            product.save()
+    error = 0
+    if request.method == "POST" and request.user.is_authenticated:
+
+        if "new_bid" in request.POST:
+
+            new_bid = request.POST["bid"]
+            product = Listings.objects.get(pk = item)
+
+            print(new_bid)
+            if new_bid.isdigit() and  int(new_bid) > product.current_bid:
+                product.current_bid = new_bid
+                product.save()
+                bid = Bids(tile = product, user = request.user, value = new_bid)
+                bid.save()
+                error = 3
+            else:
+                error = 1
+        elif "to_watch_list" in request.POST:
+            product = Listings.objects.get(pk = item)
+            new_watch_list = Watch_List(user = request.user, title = product)
+            new_watch_list.save()
+    else:
+        error = 2
+        print("no")
 
 
     try: 
-        product = listings.objects.get(pk = item)
+        product = Listings.objects.get(pk = item)
         comments = product.comments.all()
-        return render(request,"auctions/product.html",{"product":product,"comments":comments})
+        return render(request,"auctions/product.html",{"product":product,"comments":comments,"error":error})
     except:
         return redirect("index")
 
