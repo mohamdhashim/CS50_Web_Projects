@@ -66,10 +66,11 @@ def register(request):
         return render(request, "auctions/register.html")
 
 
+
 def product(request,item):
     item = int(item)
 
-    error = 0
+    error = 0 #no Errors
     if request.method == "POST" and request.user.is_authenticated:
 
         if "new_bid" in request.POST:
@@ -77,21 +78,22 @@ def product(request,item):
             new_bid = request.POST["bid"]
             product = Listings.objects.get(pk = item)
 
-            print(new_bid)
             if new_bid.isdigit() and  int(new_bid) > product.current_bid:
+
                 product.current_bid = new_bid
                 product.save()
                 bid = Bids(tile = product, user = request.user, value = new_bid)
                 bid.save()
-                error = 3
+                error = 3 #listing added successfully
+
             else:
-                error = 1
+                error = 1 # Error input not a numeric value or less than current Bid
+
         elif "to_watch_list" in request.POST:
 
             user_list = request.user.list.all() #check if listing exist in user watch_list
+
             for listings in user_list:
-                print(listings.id)
-                print(item)
                 if listings.title.id== item:
                     return redirect('watch_list')
 
@@ -103,20 +105,26 @@ def product(request,item):
         error = 2
         print("no")
 
-
     try: 
+
         product = Listings.objects.get(pk = item)
         comments = product.comments.all()
+
         return render(request,"auctions/product.html",{"product":product,"comments":comments,"error":error})
+
     except:
         return redirect("index")
+
+
 
 def watch_list(request):
     name = User.objects.get(username = request.user)
     list = name.list.all()
     return render(request,"auctions/watch_list.html",{"watch_list":list})
 
-def new_product(request):
+
+
+def new_product(request): 
     if request.method == "POST":
         form = newProductForm(data=request.POST, files=request.FILES)
         new_item = form.save(commit=False)
