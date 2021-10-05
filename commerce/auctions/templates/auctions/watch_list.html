@@ -14,7 +14,7 @@
 
             {% for item in watch_list %}
 
-            <div class="flip-card">  <a href="{% url 'product' item.id%}" >
+            <div class="flip-card">  <a href="{% url 'product' item.title.id%}" >
 
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -28,6 +28,7 @@
                     <p>{{item.title.description}}</p> 
                     </div>  </a>
                 </div>
+                
             </div>
             {% endfor %}
         </div>

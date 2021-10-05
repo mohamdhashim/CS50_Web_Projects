@@ -12,14 +12,15 @@ class Listings(models.Model):
     start_bid = models.IntegerField(default=1)
     image = models.ImageField(blank=True , default = 'sabo.png' )
     description = models.CharField(max_length=411, default = "No Describtion out there")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name ="listings")
 class Comments(models.Model):
-    user = models.CharField(max_length=30)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name ="comments")
     title_id = models.ForeignKey(Listings, on_delete=models.CASCADE,related_name='comments')
     text = models.CharField(max_length = 500)
 
 class Bids(models.Model):
     tile = models.ForeignKey(Listings, on_delete = models.CASCADE, related_name ='bids')
-    user = models.CharField(max_length = 30)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name ="bids")
     value = models.IntegerField(null=False)
 
 class Watch_List(models.Model):

@@ -13,7 +13,11 @@
         
         <h4>Current Bid : {{product.current_bid}}$</h4>
     </div>
- 
+    <h2 style="color:blue;">{{product.owner.username}}</h2>
+    {% if user == product.user %}
+    <h2 style="color:blue;">you added it</h2>
+    {% endif%}
+
     <form class = "bid_input" action="{% url 'product' product.id%}" method="post">
         {% csrf_token %}
         <input class = "form-control" name = "bid" type ="text" placeholder = "add new bid" style = "width: 200px; display:inline;">

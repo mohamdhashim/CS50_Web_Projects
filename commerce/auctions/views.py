@@ -87,7 +87,16 @@ def product(request,item):
             else:
                 error = 1
         elif "to_watch_list" in request.POST:
+
+            user_list = request.user.list.all() #check if listing exist in user watch_list
+            for listings in user_list:
+                print(listings.id)
+                print(item)
+                if listings.title.id== item:
+                    return redirect('watch_list')
+
             product = Listings.objects.get(pk = item)
+
             new_watch_list = Watch_List(user = request.user, title = product)
             new_watch_list.save()
     else:
