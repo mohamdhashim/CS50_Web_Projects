@@ -59,13 +59,15 @@ function send_email(event) {
       console.log(result);
   });
   
-fetch('/emails')
-.then(response => response.json())
-.then(email => {
-    // Print email
-    console.log(email);
+  fetch('/emails')
+  fetch('/emails')
+  .then(response => response.json())
+  .then(email => {
+      // Print email
+      console.log(email);
 
-    // ... do something else with email ...
-});
+      // ... do something else with email ...
+  });
+
 }
 
