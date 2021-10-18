@@ -345,6 +345,8 @@
   }
   #main .message-list li .col-1 .star-toggle {
     margin-top: 15px;
+    color: goldenrod;
+    
   }
   #main .message-list li .col-1 .title {
     position: absolute;

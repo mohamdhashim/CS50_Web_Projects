@@ -2,16 +2,72 @@
 {% load static %}
 
 {% block body %}
-    <h2>{{ request.user.email }}</h2>
 
-    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
-    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
-    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
-    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
-    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
-    <hr>
+    <aside id="sidebar" class="nano">
+        <div class="nano-content">
+          <div class="logo-container">
+              <span class="logo glyphicon glyphicon-envelope">
+              </span>Mail</div>
+        <a id = "compose" class="compose-button">Compose</a>
+          <menu class="menu-segment">
+            <ul>
+
+              <li id="inbox" class="active"><a>Inbox<span> (43)</span></a></li>
+              <li id="archived"> <a>Important</a></li>
+              <li id="sent"><a>Sent</a></li>
+              <li><a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a></li>
+
+            </ul>
+          </menu>
+        </div>
+      </aside>
 
     <div id="emails-view">
+        <main id="main">
+            <header class="header">
+              <div class="search-box">
+                <input placeholder="Search..."><span class="icon glyphicon glyphicon-search"></span>
+              </div>
+              <h1 class="page-title"><a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a>Inbox<a><span class="icon glyphicon glyphicon-chevron-down"></span></a></h1>
+            </header>
+        
+            <div id="main-nano-wrapper" class="nano">
+              <div class="nano-content">
+                <ul id = "maillist" class="message-list">
+                  <li class="unread">
+                    <div class="col col-1"><span class="dot"></span>
+                      <div class="checkbox-wrapper">
+                        <input type="checkbox" id="chk1">
+                        <label for="chk1" class="toggle"></label>
+                      </div>
+                      <p class="title">Lucas Kriebel (via Twitter)</p><span class="star-toggle glyphicon glyphicon-star-empty"></span>
+                    </div>
+                    <div class="col col-2">
+                      <div class="subject">Lucas Kriebel (@LucasKriebel) has sent you a direct message on Twitter! &nbsp;&ndash;&nbsp; <span class="teaser">@LucasKriebel - Very cool :) Nicklas, You have a new direct message.</span></div>
+                      <div class="date">11:49 am</div>
+                    </div>
+                  </li>
+    
+                  <li>
+                    <div class="col col-1"><span class="dot"></span>
+                      <div class="checkbox-wrapper">
+                        <input type="checkbox" id="chk6">
+                        <label for="chk6" class="toggle"></label>
+                      </div>
+                      <p class="title">Web Support Dennis</p><span class="star-toggle glyphicon glyphicon-star-empty"></span>
+                    </div>
+                    <div class="col col-2">
+                      <div class="subject">Re: New mail settings &nbsp;&ndash;&nbsp; <span class="teaser">Will you answer him asap?</span></div>
+                      <div class="date">Mar 7</div>
+                    </div>
+                  </li>
+    
+    
+    
+                </ul><a href="#" class="load-more-link">Show more messages</a>
+              </div>
+            </div>
+          </main>
     </div>
 
     <div id="compose-view">

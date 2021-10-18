@@ -28,10 +28,69 @@ function load_mailbox(mailbox) {
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
 
-  // Show the mailbox name
-  document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
-}
 
+  // Show the mailbox name
+  document.querySelector('#maillist').innerHTML = ''
+
+  if (mailbox == 'sent'){
+
+
+    // receive the sent data from the server
+    fetch('/emails/sent')
+      .then(response => response.json())
+      .then(emails => {
+        // Print result
+        emails.forEach(email => {
+          mail_list(email.archived,email.recipients,email.subject,timestamp(email.timestamp))
+        });  
+    });
+
+    
+  }else if(mailbox == "archieved"){
+    
+  }
+
+}
+function timestamp(date){ //to fromat how timestamp of mail will be presented
+  
+  let today = new Date();
+  today = today.toDateString();
+  today = today.split(' ');
+
+  date = date.split(' ');
+  if(today[3]+',' != date[2]){ //year not equal current year
+    return (`${date[0]} ${date[1]} ${date[2]}`);
+  }
+
+
+  if(date[0] === today[1] && date[1] === today[2]) //mail sent/recieved today
+  {
+    return (`${date[3]} ${date[4]}`); //return only time
+  }
+
+  return(`${date[0]} ${date[1]}`); // else return month and day only
+
+}
+function mail_list(is_read, sender, subject, date){
+
+  is_read = is_read ? "read" : "unread";
+
+  document.querySelector('#maillist').innerHTML += `
+    <li class=${is_read}>
+      <div class="col col-1"><span class="dot"></span>
+        <div class="checkbox-wrapper">
+          <input type="checkbox" id="chk1">
+          <label for="chk1" class="toggle"></label>
+        </div>
+        <p class="title">${sender}</p><span class="star-toggle glyphicon glyphicon-star-empty"></span>
+      </div>
+      <div class="col col-2">
+        <div class="subject">${subject}<span class="teaser"></span></div>
+        <div class="date">${date}</div>
+      </div>
+    </li>`;
+
+}
 
 
 function send_email(event) {
@@ -44,7 +103,6 @@ function send_email(event) {
   const body = document.querySelector("#compose-body").value;
 
   // Send the data to the server.
-
   fetch('/emails', {
     method: 'POST',
     body: JSON.stringify({
@@ -57,16 +115,6 @@ function send_email(event) {
   .then(result => {
       // Print result
       console.log(result);
-  });
-  
-  fetch('/emails')
-  fetch('/emails')
-  .then(response => response.json())
-  .then(email => {
-      // Print email
-      console.log(email);
-
-      // ... do something else with email ...
   });
 
 }
