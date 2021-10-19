@@ -224,13 +224,13 @@
     transition-duration: 0.5s;
     transition-delay: 0.5s;
   }
-  .show-sidebar #main .header .page-title .sidebar-toggle-btn .line-angle1 {
+  .show-sidebar #main .header .page-title .sidebar-toggle-btn {
     transform: rotate(-120deg);
   }
-  .show-sidebar #main .header .page-title .sidebar-toggle-btn .line-angle2 {
+  .show-sidebar #main .header .page-title .sidebar-toggle-btn{
     transform: rotate(120deg);
   }
-  #main .header .page-title .sidebar-toggle-btn .line-angle1 {
+  #main .header .page-title .sidebar-toggle-btn {
     width: 8px;
     margin: 0;
     position: absolute;
@@ -238,7 +238,7 @@
     left: -11px;
     transform: rotate(-60deg);
   }
-  #main .header .page-title .sidebar-toggle-btn .line-angle2 {
+  #main .header .page-title .sidebar-toggle-btn {
     width: 8px;
     margin: 0;
     position: absolute;
