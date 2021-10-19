@@ -13,7 +13,7 @@
             <ul>
 
               <li id="inbox" class="active"><a>Inbox<span> (43)</span></a></li>
-              <li id="archived"> <a>Important</a></li>
+              <li id="archived"> <a>archive</a></li>
               <li id="sent"><a>Sent</a></li>
               <li><a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a></li>
 
@@ -22,70 +22,56 @@
         </div>
       </aside>
 
-    <div id="emails-view">
+
+
         <main id="main">
-            <header class="header">
-              <div class="search-box">
-                <input placeholder="Search..."><span class="icon glyphicon glyphicon-search"></span>
+          <div id="emails-view">
+              <header class="header">
+                <div class="search-box">
+                  <input placeholder="Search..."><span class="icon glyphicon glyphicon-search"></span>
+                </div>
+                <h1 class="page-title"><a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a>Inbox<a><span class="icon glyphicon glyphicon-chevron-down"></span></a></h1>
+              </header>
+          
+              <div id="main-nano-wrapper" class="nano">
+                <div class="nano-content">
+                  <ul id = "maillist" class="message-list">
+                  </ul><a href="#" class="load-more-link">Show more messages</a>
+                </div>
               </div>
-              <h1 class="page-title"><a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a>Inbox<a><span class="icon glyphicon glyphicon-chevron-down"></span></a></h1>
+          </div>
+
+          <div id="compose-view" class="compose">
+            <header class="header">
+              <h1 class="page-title"><a class="sidebar-toggle-btn trigger-toggle-sidebar"><span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span></a>New Email<a><span class="icon glyphicon glyphicon-chevron-down"></span></a></h1>
             </header>
-        
             <div id="main-nano-wrapper" class="nano">
               <div class="nano-content">
-                <ul id = "maillist" class="message-list">
-                  <li class="unread">
-                    <div class="col col-1"><span class="dot"></span>
-                      <div class="checkbox-wrapper">
-                        <input type="checkbox" id="chk1">
-                        <label for="chk1" class="toggle"></label>
-                      </div>
-                      <p class="title">Lucas Kriebel (via Twitter)</p><span class="star-toggle glyphicon glyphicon-star-empty"></span>
+                <form id="compose-form" class ="compose-form">
+                    <div>
+                        From: <input disabled value="{{ request.user.email }}" class = "compose-label">
                     </div>
-                    <div class="col col-2">
-                      <div class="subject">Lucas Kriebel (@LucasKriebel) has sent you a direct message on Twitter! &nbsp;&ndash;&nbsp; <span class="teaser">@LucasKriebel - Very cool :) Nicklas, You have a new direct message.</span></div>
-                      <div class="date">11:49 am</div>
+                    <div class>
+                        To: <input id="compose-recipients" class = "compose-label">
                     </div>
-                  </li>
-    
-                  <li>
-                    <div class="col col-1"><span class="dot"></span>
-                      <div class="checkbox-wrapper">
-                        <input type="checkbox" id="chk6">
-                        <label for="chk6" class="toggle"></label>
-                      </div>
-                      <p class="title">Web Support Dennis</p><span class="star-toggle glyphicon glyphicon-star-empty"></span>
+                    <div >
+                        <input  class = "compose-label" id="compose-subject" placeholder="Subject">
                     </div>
-                    <div class="col col-2">
-                      <div class="subject">Re: New mail settings &nbsp;&ndash;&nbsp; <span class="teaser">Will you answer him asap?</span></div>
-                      <div class="date">Mar 7</div>
-                    </div>
-                  </li>
-    
-    
-    
-                </ul><a href="#" class="load-more-link">Show more messages</a>
+                    <textarea class ="compose-body" id="compose-body" placeholder="Body"></textarea>
+                    <input type="submit" class="btn btn-primary"/>
+                </form>
+
               </div>
             </div>
-          </main>
-    </div>
+          </div>
 
-    <div id="compose-view">
-        <h3>New Email</h3>
-        <form id="compose-form">
-            <div class="form-group">
-                From: <input disabled class="form-control" value="{{ request.user.email }}">
-            </div>
-            <div class="form-group">
-                To: <input id="compose-recipients" class="form-control">
-            </div>
-            <div class="form-group">
-                <input class="form-control" id="compose-subject" placeholder="Subject">
-            </div>
-            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-            <input type="submit" class="btn btn-primary"/>
-        </form>
-    </div>
+          
+          </main>
+
+        
+
+
+
 {% endblock %}
 
 {% block script %}

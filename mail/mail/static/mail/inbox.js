@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#compose').addEventListener('click', compose_email);
   document.querySelector('#compose-form').addEventListener("submit",send_email);
   // By default, load the inbox
+
+
   load_mailbox('inbox');
 });
 
@@ -46,8 +48,29 @@ function load_mailbox(mailbox) {
     });
 
     
-  }else if(mailbox == "archieved"){
-    
+  }else if(mailbox == "inbox"){
+          // receive the sent data from the server
+    fetch('/emails/inbox')
+    .then(response => response.json())
+    .then(emails => {
+      // Print result
+      emails.forEach(email => {
+        mail_list(email.read,email.sender,email.subject,timestamp(email.timestamp))
+      });  
+  });
+  }else if(mailbox == "archived")
+  {
+    i = 3
+    fetch('/emails/inbox')
+    .then(response => response.json())
+    .then(emails =>{
+      emails.forEach(email =>{
+        if (email.archived)
+          mail_list(email.read,email.sender,email.subject,timestamp(email.timestamp),i)
+          i++
+      })
+    })
+
   }
 
 }
@@ -71,7 +94,7 @@ function timestamp(date){ //to fromat how timestamp of mail will be presented
   return(`${date[0]} ${date[1]}`); // else return month and day only
 
 }
-function mail_list(is_read, sender, subject, date){
+function mail_list(is_read, sender, subject, date,i){
 
   is_read = is_read ? "read" : "unread";
 
@@ -79,8 +102,8 @@ function mail_list(is_read, sender, subject, date){
     <li class=${is_read}>
       <div class="col col-1"><span class="dot"></span>
         <div class="checkbox-wrapper">
-          <input type="checkbox" id="chk1">
-          <label for="chk1" class="toggle"></label>
+          <input type="checkbox" id="chk${i}">
+          <label for="chk${i}" class="togge"></label>
         </div>
         <p class="title">${sender}</p><span class="star-toggle glyphicon glyphicon-star-empty"></span>
       </div>
@@ -94,6 +117,7 @@ function mail_list(is_read, sender, subject, date){
 
 
 function send_email(event) {
+
   // Modifies the default beheavor so it doesn't reload the page after submitting.
   event.preventDefault();
 

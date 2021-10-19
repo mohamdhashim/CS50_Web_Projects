@@ -71,7 +71,39 @@
   }
   #sidebar .menu-segment li a:hover {
     background: #21262d;
+
   }
+
+.compose-form {
+  height: 400px;
+
+  
+  margin-block-start: 2em;
+  margin-block-end: 2em;
+  margin-inline-start: 60px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+.compose-label {
+  width: 70%;
+  border-style: dashed;
+  border-color: grey;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  
+}
+.compose-body{
+  width: 70%;
+  height: 50%;
+  display: -webkit-box;
+  border-radius: 5px;
+  border-radius:5px;
+  margin-bottom: 5px;
+
+
+}
 
 
 
@@ -112,9 +144,7 @@
     opacity: 0;
     cursor: pointer;
   }
-  .checkbox-wrapper input:checked ~ label {
-    opacity: 1;
-  }
+
   .checkbox-wrapper label {
     position: absolute;
     top: 0;
